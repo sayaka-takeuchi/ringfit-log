@@ -1,13 +1,16 @@
 import {Text} from "react-native";
-import {Box, VStack} from "native-base";
-import React from "react";
+import {Box, Button, VStack} from "native-base";
+import React, {FC} from "react";
 import {SafeAreaView} from "react-native";
 
-const LogCard = () => {
+type LogCardProps = {
+  navigation: any
+}
+const LogCard:FC<LogCardProps> = ({navigation}) => {
   return (
 <SafeAreaView >
 
-        <Box  borderWidth={1} borderRadius='md' mb={4}>
+      <Box  borderWidth={1} borderRadius='md' mb={4}>
       <VStack space={4} >
         <Box px={4} pt={4}>
           3/3
@@ -20,6 +23,7 @@ const LogCard = () => {
           <Text>総消費カロリー</Text>
           <Text>〇〇kcal</Text>
         </Box>
+        <Button onPress={() => navigation.navigate("LogDetail")}>詳細</Button>
       </VStack>
     </Box>
   </SafeAreaView>

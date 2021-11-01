@@ -1,30 +1,22 @@
 import React from "react";
-import {
-  NativeBaseProvider, ScrollView,
-} from "native-base";
-import LogCard from "./components/LogCard";
-import Icon from 'react-native-vector-icons/AntDesign';
-import {StyleSheet} from "react-native";
-export default function App() {
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import {NavigationContainer} from "@react-navigation/native";
+import HomeScreen from "./Screens/HomeScreen";
+import AddLogScreen from "./Screens/AddLogScreen";
+import LogDetailScreen from "./Screens/LogDetailScreen";
+
+const Stack = createNativeStackNavigator();
+
+const App = () => {
   return (
-    <NativeBaseProvider>
-      <Icon name="pluscircle" size={50} color="#900" style={styles.icon}  />
-      <ScrollView _contentContainerStyle={{
-        px: "20px",
-      }}>
-      <LogCard />
-      <LogCard />
-      <LogCard />
-      <LogCard />
-      <LogCard />
-      </ScrollView>
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <Stack.Navigator >
+          <Stack.Screen name={"Home"} component={HomeScreen} />
+          <Stack.Screen name={"AddLog"} component={AddLogScreen} />
+          <Stack.Screen name={"LogDetail"} component={LogDetailScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-const styles=StyleSheet.create({
-  icon: {
-   position: "absolute",
-   bottom: 30,
-    right: 10
-  }
-})
+
+export default App;
